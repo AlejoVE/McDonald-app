@@ -1,0 +1,10 @@
+.product-container {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid blue;
+
+	img {
+		width: 20%;
+		border: 2px solid green;
+	}
+}

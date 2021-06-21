@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../scss/style.scss",
+		"../scss/listingPage/listingPage.scss"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,kBAAkB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,MAAM,EAAE,cAAc,GAMtB;EATD,AAKC,kBALiB,CAKjB,GAAG,CAAC;IACH,KAAK,EAAE,GAAG;IACV,MAAM,EAAE,eAAe,GACvB"
+}
