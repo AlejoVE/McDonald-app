@@ -1,14 +1,17 @@
 import React from 'react';
 import { products } from '../assets/products';
 import { Product } from './Product';
+import { Link } from 'react-router-dom';
 
 export const ListingPage = () => {
 	return (
 		<div>
 			{products.map((data, i) => {
-				return <Product product={data} key={i}></Product>;
+				return <Product product={data} type='list' key={data.id}></Product>;
 			})}
-			<button>See cart</button>
+			<button>
+				<Link to='/order'>See cart</Link>
+			</button>
 		</div>
 	);
 };

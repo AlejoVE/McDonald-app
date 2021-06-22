@@ -7,10 +7,10 @@ export const orderReducer = (initialState = {}, action) => {
 				productsInCart: [...initialState.productsInCart, action.payload],
 			};
 
-		// case types.logout:
-		// 	return {
-		// 		logged: false,
-		// 	};
+		case types.incrementQuantity:
+			return {
+				productsInCart: action.payload,
+			};
 
 		default:
 			return initialState;
