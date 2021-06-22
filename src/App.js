@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
-import { ListingPage } from './ Components/ListingPage';
 import { OrderContext } from './context/OrderContext';
 import { orderReducer } from './context/orderReducer';
+import { AppRouter } from './router/AppRouter';
 
 export const App = () => {
 	const [initialState, dispatch] = useReducer(orderReducer, {
@@ -9,7 +9,7 @@ export const App = () => {
 	});
 	return (
 		<OrderContext.Provider value={{ initialState, dispatch }}>
-			<ListingPage />
+			<AppRouter />
 		</OrderContext.Provider>
 	);
 };
