@@ -1,30 +1,13 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { OrderContext } from '../context/OrderContext';
+import { calculateCost } from '../helpers/helpers';
 import { Product } from './Product';
 
 export const OrderPage = () => {
 	const { initialState } = useContext(OrderContext);
 	const { productsInCart } = initialState;
 
-	const calculateCost = () => {
-		let cost = 0;
-		let globalDiscount = 0;
-		productsInCart.forEach((product) => {
-			const discount = (product.price * product.discount) / 100;
-			globalDiscount += discount * product.quantity;
-			const price = product.price - discount;
-
-			cost += price * product.quantity;
-		});
-
-		return { cost, globalDiscount };
-	};
-
-	const { cost, globalDiscount } = calculateCost();
-
-	useEffect(() => {
-		console.log('I changed');
-	}, [productsInCart]);
+	const { cost, globalDiscount, totalToPay } = calculateCost(productsInCart);
 
 	return (
 		<div>
@@ -40,7 +23,8 @@ export const OrderPage = () => {
 					</div>
 					<div>
 						<label>${cost}</label>
-						<label>${globalDiscount}</label>
+						<label>-${globalDiscount}</label>
+						<label>${totalToPay}</label>
 					</div>
 				</div>
 				<button>Payment and delivery</button>

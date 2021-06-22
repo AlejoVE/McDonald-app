@@ -1,4 +1,8 @@
-export const buttonGenerator = (isAdded, handleAddToCart, handleRemoveProduct) => {
+export const buttonGenerator = (
+	isAdded,
+	handleAddToCart,
+	handleRemoveProduct
+) => {
 	let button = undefined;
 
 	if (isAdded) {
@@ -9,9 +13,20 @@ export const buttonGenerator = (isAdded, handleAddToCart, handleRemoveProduct) =
 	return button;
 };
 
-export const divGenerator = (type, isAdded, quantity, handleQuantity, handleAddToCart, handleRemoveProduct) => {
+export const divGenerator = (
+	type,
+	isAdded,
+	quantity,
+	handleQuantity,
+	handleAddToCart,
+	handleRemoveProduct
+) => {
 	if (type === 'list') {
-		return <div>{buttonGenerator(isAdded, handleAddToCart, handleRemoveProduct)}</div>;
+		return (
+			<div>
+				{buttonGenerator(isAdded, handleAddToCart, handleRemoveProduct)}
+			</div>
+		);
 	}
 
 	return (
@@ -21,4 +36,18 @@ export const divGenerator = (type, isAdded, quantity, handleQuantity, handleAddT
 			<button onClick={() => handleQuantity('+')}>+</button>
 		</div>
 	);
+};
+
+export const calculateCost = (productsInCart) => {
+	let cost = 0;
+	let globalDiscount = 0;
+	productsInCart.forEach((product) => {
+		const discount = (product.price * product.discount) / 100;
+		globalDiscount += discount * product.quantity;
+		const price = product.price - discount;
+
+		cost += price * product.quantity;
+	});
+	const totalToPay = cost - globalDiscount;
+	return { cost, globalDiscount, totalToPay };
 };
