@@ -11,6 +11,10 @@ export const orderReducer = (initialState = {}, action) => {
 			return {
 				productsInCart: action.payload,
 			};
+		case types.removeFromCart:
+			return {
+				productsInCart: action.payload,
+			};
 
 		default:
 			return initialState;

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { addToCart, manageQuantity } from '../actions/actions';
+import { addToCart, manageQuantity, removeFromCart } from '../actions/actions';
 import { OrderContext } from '../context/OrderContext';
 import { divGenerator } from '../helpers/helpers';
 
@@ -14,6 +14,13 @@ export const Product = (props) => {
 
 	const handleAddToCart = () => {
 		dispatch(addToCart(product));
+	};
+
+	const handleRemoveProduct = () => {
+		const filteredProducts = productsInCart.filter(
+			(product) => product.id !== id
+		);
+		dispatch(removeFromCart(filteredProducts));
 	};
 
 	const handleQuantity = (action) => {
@@ -43,10 +50,14 @@ export const Product = (props) => {
 					isAdded,
 					quantity,
 					handleQuantity,
-					handleAddToCart
+					handleAddToCart,
+					handleRemoveProduct
 				)}
 			</div>
-			<h2>Price: {price}</h2>
+			<div>
+				{type === 'order' && <button onClick={handleRemoveProduct}><i class="far fa-trash-alt"></i></button>}
+				<h2>{price}</h2>
+			</div>
 		</div>
 	);
 };

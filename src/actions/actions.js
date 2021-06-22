@@ -5,6 +5,11 @@ export const addToCart = (product) => ({
 	payload: { ...product, quantity: 1 },
 });
 
+export const removeFromCart = (products) => ({
+	type: types.removeFromCart,
+	payload: products,
+});
+
 export const manageQuantity = (productsInCart) => ({
 	type: types.incrementQuantity,
 	payload: productsInCart,
