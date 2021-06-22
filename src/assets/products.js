@@ -9,11 +9,11 @@ import eiffel from '../assets/images/eiffel-burger.jpeg';
 export const products = [
 	{
 		id: 1,
-        name: "Tibus' Boss Burger",
+		name: "Tibus' Boss Burger",
 		description:
 			'Big burger with 2x beef, barbecue sauce, cheese, pickle, onion & salat.',
 		price: 4.8,
-		discount: '20%',
+		discount: 20,
 		size: 'Big',
 		Weight: '500g',
 		prepareTimeMinutes: 8,
@@ -21,11 +21,11 @@ export const products = [
 	},
 	{
 		id: 2,
-        name: "Leny's Crunchy Bicky",
+		name: "Leny's Crunchy Bicky",
 		description:
 			'Medium burger with 1x beef, triple bycky sauce, cheese, pickle, fried onion & salat.',
 		price: 4.15,
-		discount: 'none',
+		discount: 0,
 		size: 'Medium',
 		Weight: '370g',
 		prepareTimeMinutes: 5,
@@ -33,11 +33,11 @@ export const products = [
 	},
 	{
 		id: 3,
-        name: "The Phil's O'sophy",
+		name: "The Phil's O'sophy",
 		description:
 			'Medium burger with 1x beef, bacon, triple ketchup sauce, cheese, salat.',
 		price: 4,
-		discount: 'none',
+		discount: 0,
 		size: 'Medium',
 		Weight: '380g',
 		prepareTimeMinutes: 6,
@@ -45,11 +45,11 @@ export const products = [
 	},
 	{
 		id: 4,
-        name: 'Aless double steak appartment',
+		name: 'Aless double steak appartment',
 		description:
 			'Big burger with 2x beef, bacon, andalouse sauce, onion, salat',
 		price: 4.6,
-		discount: '10%',
+		discount: 10,
 		size: 'Big',
 		Weight: '425g',
 		prepareTimeMinutes: 8,
@@ -57,10 +57,10 @@ export const products = [
 	},
 	{
 		id: 5,
-        name: 'The "Bald & bold"',
+		name: 'The "Bald & bold"',
 		description: 'Big burger with 3x beef, pickle sauce, fried onion, salat.',
 		price: 5,
-		discount: '33%',
+		discount: 33,
 		size: 'Big',
 		Weight: '475g',
 		prepareTimeMinutes: 8,
@@ -68,11 +68,11 @@ export const products = [
 	},
 	{
 		id: 6,
-        name: 'The Rafaëlo (kid burger)',
+		name: 'The Rafaëlo (kid burger)',
 		description:
 			'Small burger with 1x beef, cheese, ketchup sauce, pickle, salat.',
 		price: 2,
-		discount: 'none',
+		discount: 0,
 		size: 'Small',
 		Weight: '175g',
 		prepareTimeMinutes: 3,
@@ -80,11 +80,11 @@ export const products = [
 	},
 	{
 		id: 7,
-        name: 'The "Eiffel Tour Burjer"',
+		name: 'The "Eiffel Tour Burjer"',
 		description:
 			'Medium burger with 2x beef, camembert cheese, tartare & wine sauce, pickle, salat.',
 		price: 4.33,
-		discount: '15%',
+		discount: 15,
 		size: 'Medium',
 		Weight: '250g',
 		prepareTimeMinutes: 6,

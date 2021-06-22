@@ -55,7 +55,11 @@ export const Product = (props) => {
 				)}
 			</div>
 			<div>
-				{type === 'order' && <button onClick={handleRemoveProduct}><i class="far fa-trash-alt"></i></button>}
+				{type === 'order' && (
+					<button onClick={handleRemoveProduct}>
+						<i className='far fa-trash-alt'></i>
+					</button>
+				)}
 				<h2>{price}</h2>
 			</div>
 		</div>
