@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { OrderContext } from '../context/OrderContext';
 import { calculatePrepareTime, calculateCost } from '../helpers/helpers';
 import { Product } from './Product';
@@ -12,6 +13,10 @@ export const OrderPage = () => {
 
 	return (
 		<div>
+			<div className="order-header-container">
+				<button><Link to='/list'>{'<'}</Link></button>
+				<h1>Your order</h1>
+			</div>
 			{productsInCart.map((product, i) => {
 				return <Product product={product} type='order' key={i}></Product>;
 			})}
