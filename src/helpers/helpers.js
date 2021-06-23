@@ -39,15 +39,30 @@ export const divGenerator = (
 };
 
 export const calculateCost = (productsInCart) => {
-	let cost = 0;
 	let globalDiscount = 0;
+	let basePrice = 0;
+
 	productsInCart.forEach((product) => {
 		const discount = (product.price * product.discount) / 100;
 		globalDiscount += discount * product.quantity;
-		const price = product.price - discount;
-
-		cost += price * product.quantity;
+		basePrice += product.price * product.quantity;
 	});
-	const totalToPay = cost - globalDiscount;
-	return { cost, globalDiscount, totalToPay };
+
+	const totalToPay = basePrice - globalDiscount;
+	return { basePrice, globalDiscount, totalToPay };
 };
+
+export const calculatePrepareTime = (productsInCart) => {
+	let globalCookingTime = 0;
+
+	productsInCart.forEach((product) => {
+		globalCookingTime += product.prepareTimeMinutes * product.quantity;
+	});
+
+	const hours = Math.floor(globalCookingTime / 60);  
+	const minutes = globalCookingTime % 60;
+
+	return {hours, minutes};   
+
+	 
+}

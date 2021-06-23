@@ -6,4 +6,15 @@
     width: 20%;
     border: 2px solid green; }
 
+.order-details-container {
+  border: 1px solid red; }
+
+.order-detail-line {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid blue; }
+
 /*# sourceMappingURL=style.css.map */

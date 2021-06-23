@@ -3,8 +3,9 @@
 	"file": "style.css",
 	"sources": [
 		"../scss/style.scss",
-		"../scss/listingPage/listingPage.scss"
+		"../scss/listingPage/listingPage.scss",
+		"../scss/orderPage/orderPage.scss"
 	],
 	"names": [],
-	"mappings": "ACAA,AAAA,kBAAkB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,MAAM,EAAE,cAAc,GAMtB;EATD,AAKC,kBALiB,CAKjB,GAAG,CAAC;IACH,KAAK,EAAE,GAAG;IACV,MAAM,EAAE,eAAe,GACvB"
+	"mappings": "ACAA,AAAA,kBAAkB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,MAAM,EAAE,cAAc,GAMtB;EATD,AAKC,kBALiB,CAKjB,GAAG,CAAC;IACH,KAAK,EAAE,GAAG;IACV,MAAM,EAAE,eAAe,GACvB;;ACRF,AAAA,wBAAwB,CAAA;EACpB,MAAM,EAAE,aAAa,GACxB;;AAED,AAAA,kBAAkB,CAAC;EACf,OAAO,EAAE,IAAI;EACb,KAAK,EAAE,IAAI;EACX,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;EACnB,MAAM,EAAE,cAAc,GACzB"
 }
