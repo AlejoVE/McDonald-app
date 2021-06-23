@@ -1,8 +1,8 @@
 import { types } from '../types/types';
 
-export const addToCart = (product) => ({
+export const addToCart = (product, quantity) => ({
 	type: types.addToCart,
-	payload: { ...product, quantity: 1 },
+	payload: { ...product, quantity },
 });
 
 export const removeFromCart = (products) => ({

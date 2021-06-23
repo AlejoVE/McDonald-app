@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { setActiveProduct } from '../actions/actions';
 import { OrderContext } from '../context/OrderContext';
-import { divGenerator, addProductToCart, removeProductFromCart, setQuantity } from '../helpers/helpers';
+import { divGenerator, addProductToCart, removeProductFromCart, manageQuantityProduct } from '../helpers/helpers';
 
 export const Product = (props) => {
 	const { product, type } = props;
 	const { img, name, price, id } = product;
 	let { quantity } = product;
+	
 	const { initialState, dispatch } = useContext(OrderContext);
 	const { productsInCart, activeProducts } = initialState;
 
@@ -24,7 +25,7 @@ export const Product = (props) => {
 	};
 
 	const handleQuantity = (action) => {
-		setQuantity(action, productsInCart, id, quantity, dispatch)
+		manageQuantityProduct(action, productsInCart, id, quantity, dispatch)
 	};
 
 	const handleClick= () => {

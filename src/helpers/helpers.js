@@ -1,9 +1,9 @@
 import { addToCart, manageQuantity, removeFromCart } from "../actions/actions";
 
 
-export const addProductToCart = (dispatch, product) => {
+export const addProductToCart = (dispatch, product, quantity = 1) => {
 	
-	dispatch(addToCart(product));
+	dispatch(addToCart(product, quantity));
 };
 
 export const removeProductFromCart = (productsInCart, id, dispatch) => {
@@ -14,9 +14,11 @@ export const removeProductFromCart = (productsInCart, id, dispatch) => {
 	dispatch(removeFromCart(filteredProducts));
 };
 
-export const setQuantity = (action, productsInCart, id, quantity, dispatch) => {
+export const manageQuantityProduct = (action, productsInCart, id, quantity, dispatch) => {
 	const index = productsInCart.findIndex((x) => x.id === id);
 	const targetProduct = productsInCart[index];
+	console.log({productsInCart})
+	
 
 	if (action === '-') {
 		if (quantity <= 1) {

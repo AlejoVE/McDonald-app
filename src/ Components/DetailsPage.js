@@ -1,24 +1,31 @@
-import React, { useContext } from 'react'
-import {useParams} from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import {useHistory, useParams, Link} from 'react-router-dom'
 import { OrderContext } from '../context/OrderContext'
-import { buttonGenerator, calculateCost } from '../helpers/helpers';
+import { addProductToCart, buttonGenerator, calculateCost, manageQuantityProduct, removeProductFromCart, } from '../helpers/helpers';
 import {SquareProductDetails} from './SquareProductDetails'
 import {SquareIcon} from './SquareIcon'
 
 export const DetailsPage = () => {
-    const {initialState} = useContext(OrderContext);
+    const {initialState, dispatch} = useContext(OrderContext);
     const {activeProducts, productsInCart} = initialState;
     const {productId} = useParams();
+    const history = useHistory();
+    let [quantity, setQuantity] = useState(1)
 
-
+    
 
     const product = activeProducts.filter(product=> product.id == productId)
     const isInTheCart = productsInCart.some(product=> product.id == productId);
+    const {name, price, description, prepareTimeMinutes, weight, img, discount: discountBrute, size, id} = product[0];
+    const isDiscount = discountBrute > 0;
+
+    if(isInTheCart){
+        const [targetProduct] = productsInCart.filter(product=> product.id == productId);
+        quantity = targetProduct.quantity;
+    }
     
 
-    const {name, price, description, prepareTimeMinutes, weight, img, discount: discountBrute, size} = product[0];
     
-    const isDiscount = discountBrute > 0;
     
     let priceToPay = 0
     if(isDiscount){
@@ -27,21 +34,43 @@ export const DetailsPage = () => {
          
     }
 
-    // const handleAddToCart = () => {
-	
-	// 	dispatch(addToCart(product));
-	// };
+    const handleGoBack = () => {
+         history.goBack();
+    }
+    const handleGoToCart = () => {
+        console.log('click')
+        
+         history.push('/order');
+    }
 
-    let quantity = 1;
-    
-    
-    
-    
-    
+    const handleAddToCart = () => {
+        addProductToCart(dispatch, product[0], quantity)
+		
+	};
+
+    const handleRemoveFromCart = () => {
+        removeProductFromCart(productsInCart, id,  dispatch)
+	};
+
+    const handleQuantity = (action) => {
+        if(isInTheCart){
+            manageQuantityProduct(action, productsInCart, id, quantity, dispatch);
+            return;
+        }
+
+        if(action === '+'){
+            setQuantity(quantity+1)
+        } else {
+            setQuantity(quantity-1)
+        }
+    }
 
     return (
         <div>
-            <div>
+            <div className="details-header">
+                <button onClick={handleGoBack}>{'<'}</button>
+                <button><i className="far fa-heart"></i></button>
+                <button onClick={handleGoToCart}><i className="fas fa-shopping-cart"></i></button>
             </div>
             <div>
                 {isDiscount && <h2>{`${discountBrute}% OFF`}</h2>}
@@ -68,11 +97,11 @@ export const DetailsPage = () => {
                 </div>
                 <div>
                     <div>
-                        <button>-</button>
+                       <button onClick={() => handleQuantity('-')}>-</button>
                         <label>{quantity}</label>
-                        <button>+</button>
+                        <button onClick={() => handleQuantity('+')}>+</button>
                     </div>
-                    {buttonGenerator(isInTheCart, )}
+                    {buttonGenerator(isInTheCart, handleAddToCart, handleRemoveFromCart)}
                 </div>
             </div>
         </div>
