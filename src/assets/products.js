@@ -15,9 +15,10 @@ export const products = [
 		price: 4.8,
 		discount: 20,
 		size: 'Big',
-		Weight: '500g',
+		weight: '500g',
 		prepareTimeMinutes: 8,
 		img: boss,
+		inTheCart: false
 	},
 	{
 		id: 2,
@@ -27,9 +28,10 @@ export const products = [
 		price: 4.15,
 		discount: 0,
 		size: 'Medium',
-		Weight: '370g',
+		weight: '370g',
 		prepareTimeMinutes: 5,
 		img: leny,
+		inTheCart: false
 	},
 	{
 		id: 3,
@@ -39,9 +41,10 @@ export const products = [
 		price: 4,
 		discount: 0,
 		size: 'Medium',
-		Weight: '380g',
+		weight: '380g',
 		prepareTimeMinutes: 6,
 		img: phil,
+		inTheCart: false
 	},
 	{
 		id: 4,
@@ -51,9 +54,10 @@ export const products = [
 		price: 4.6,
 		discount: 10,
 		size: 'Big',
-		Weight: '425g',
+		weight: '425g',
 		prepareTimeMinutes: 8,
 		img: aless,
+		inTheCart: false,
 	},
 	{
 		id: 5,
@@ -62,9 +66,10 @@ export const products = [
 		price: 5,
 		discount: 33,
 		size: 'Big',
-		Weight: '475g',
+		weight: '475g',
 		prepareTimeMinutes: 8,
 		img: bold,
+		inTheCart: false
 	},
 	{
 		id: 6,
@@ -74,9 +79,10 @@ export const products = [
 		price: 2,
 		discount: 0,
 		size: 'Small',
-		Weight: '175g',
+		weight: '175g',
 		prepareTimeMinutes: 3,
 		img: rafaelo,
+		inTheCart: false,
 	},
 	{
 		id: 7,
@@ -86,8 +92,9 @@ export const products = [
 		price: 4.33,
 		discount: 15,
 		size: 'Medium',
-		Weight: '250g',
+		weight: '250g',
 		prepareTimeMinutes: 6,
 		img: eiffel,
+		inTheCart: false,
 	},
 ];

@@ -6,6 +6,11 @@
     width: 20%;
     border: 2px solid green; }
 
+.listing-container {
+  border: 1px solid blue;
+  position: relative;
+  height: 100vh; }
+
 .order-details-container {
   border: 1px solid red; }
 

@@ -1,3 +1,37 @@
+import { addToCart, manageQuantity, removeFromCart } from "../actions/actions";
+
+
+export const addProductToCart = (dispatch, product) => {
+	
+	dispatch(addToCart(product));
+};
+
+export const removeProductFromCart = (productsInCart, id, dispatch) => {
+	const filteredProducts = productsInCart.filter(
+		(product) => product.id !== id
+	);
+
+	dispatch(removeFromCart(filteredProducts));
+};
+
+export const setQuantity = (action, productsInCart, id, quantity, dispatch) => {
+	const index = productsInCart.findIndex((x) => x.id === id);
+	const targetProduct = productsInCart[index];
+
+	if (action === '-') {
+		if (quantity <= 1) {
+			return;
+		}
+		targetProduct.quantity -= 1;
+	} else {
+		targetProduct.quantity += 1;
+	}
+
+	productsInCart[index] = targetProduct;
+	dispatch(manageQuantity(productsInCart));
+};
+
+
 export const buttonGenerator = (
 	isAdded,
 	handleAddToCart,
@@ -6,9 +40,9 @@ export const buttonGenerator = (
 	let button = undefined;
 
 	if (isAdded) {
-		button = <button onClick={handleRemoveProduct}>Remove from cart</button>;
+		button = <button className="remove-button" onClick={handleRemoveProduct}>Remove from cart</button>;
 	} else {
-		button = <button onClick={handleAddToCart}>Add to cart</button>;
+		button = <button className="add-button" onClick={handleAddToCart}>Add to cart</button>;
 	}
 	return button;
 };

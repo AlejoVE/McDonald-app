@@ -4,10 +4,11 @@ import { Product } from './Product';
 import { Link } from 'react-router-dom';
 
 export const ListingPage = () => {
+	
 	return (
-		<div>
+		<div className="listing-container">
 			{products.map((data, i) => {
-				return <Product product={data} type='list' key={data.id}></Product>;
+				return <Product  product={data} type='list' key={data.id}></Product>;
 			})}
 			<button>
 				<Link to='/order'>See cart</Link>

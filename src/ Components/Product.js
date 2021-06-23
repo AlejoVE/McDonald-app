@@ -1,48 +1,48 @@
 import React, { useContext } from 'react';
-import { addToCart, manageQuantity, removeFromCart } from '../actions/actions';
+import { useHistory } from 'react-router-dom';
+import { setActiveProduct } from '../actions/actions';
 import { OrderContext } from '../context/OrderContext';
-import { divGenerator } from '../helpers/helpers';
+import { divGenerator, addProductToCart, removeProductFromCart, setQuantity } from '../helpers/helpers';
 
 export const Product = (props) => {
 	const { product, type } = props;
 	const { img, name, price, id } = product;
 	let { quantity } = product;
 	const { initialState, dispatch } = useContext(OrderContext);
-	const { productsInCart } = initialState;
+	const { productsInCart, activeProducts } = initialState;
+
+	const history = useHistory();
 
 	const isAdded = productsInCart.some((product) => product.id === id);
 
-	const handleAddToCart = () => {
-		dispatch(addToCart(product));
-	};
+	const handleAddProduct = () => {
+		addProductToCart(dispatch, product);
+	}
 
 	const handleRemoveProduct = () => {
-		const filteredProducts = productsInCart.filter(
-			(product) => product.id !== id
-		);
-		dispatch(removeFromCart(filteredProducts));
+		removeProductFromCart(productsInCart, id, dispatch)
 	};
 
 	const handleQuantity = (action) => {
-		const index = productsInCart.findIndex((x) => x.id === id);
-		const targetProduct = productsInCart[index];
-
-		if (action === '-') {
-			if (quantity <= 1) {
-				return;
-			}
-			targetProduct.quantity -= 1;
-		} else {
-			targetProduct.quantity += 1;
-		}
-
-		productsInCart[index] = targetProduct;
-		dispatch(manageQuantity(productsInCart));
+		setQuantity(action, productsInCart, id, quantity, dispatch)
 	};
 
+	const handleClick= () => {
+		const includes = activeProducts.some(product => product.id === id);
+
+		if(includes){
+			history.push(`/product/${id}`);
+			return;
+		}
+
+		dispatch(setActiveProduct(product));
+		history.push(`/product/${id}`);
+
+	}
+	
 	return (
 		<div className='product-container'>
-			<img src={img} alt={name} width='100px' height='100px'></img>
+			<img onClick={handleClick}  src={img} alt={name} width='100px' height='100px'></img>
 			<div>
 				<h1>{name}</h1>
 				{divGenerator(
@@ -50,7 +50,7 @@ export const Product = (props) => {
 					isAdded,
 					quantity,
 					handleQuantity,
-					handleAddToCart,
+					handleAddProduct,
 					handleRemoveProduct
 				)}
 			</div>

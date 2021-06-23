@@ -14,3 +14,8 @@ export const manageQuantity = (productsInCart) => ({
 	type: types.incrementQuantity,
 	payload: productsInCart,
 });
+
+export const setActiveProduct = (product) => ({
+	 type: types.setActiveProduct,
+	 payload: {...product, ingredients: []}
+})

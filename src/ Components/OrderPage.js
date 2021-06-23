@@ -10,6 +10,7 @@ export const OrderPage = () => {
 
 	const { basePrice, globalDiscount, totalToPay } = calculateCost(productsInCart);
 	const {hours, minutes} = calculatePrepareTime(productsInCart);
+	
 
 	return (
 		<div>

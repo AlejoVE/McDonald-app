@@ -6,6 +6,7 @@ import { AppRouter } from './router/AppRouter';
 export const App = () => {
 	const [initialState, dispatch] = useReducer(orderReducer, {
 		productsInCart: [],
+		activeProducts: [],
 		
 	});
 	return (

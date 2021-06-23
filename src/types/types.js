@@ -3,4 +3,5 @@ export const types = {
 	removeFromCart: '[cart] Remove from cart',
 	incrementQuantity: '[Product] Increment quantity',
 	decrementQuantity: '[Product] Decrement quantity',
+	setActiveProduct:  '[Product] Set active product'
 };
