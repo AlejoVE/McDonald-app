@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { OrderContext } from '../context/OrderContext';
 import {
 	addProductToCart,
 	buttonGenerator,
-	calculateCost,
 	manageQuantityProduct,
 	removeProductFromCart,
 } from '../helpers/helpers';
@@ -14,6 +13,7 @@ import { SquareIcon } from './SquareIcon';
 export const DetailsPage = () => {
 	const { initialState, dispatch } = useContext(OrderContext);
 	const { activeProducts, productsInCart } = initialState;
+	const [favorite, setFavorite] = useState(false);
 	const { productId } = useParams();
 	const history = useHistory();
 	let [quantity, setQuantity] = useState(1);
@@ -65,6 +65,10 @@ export const DetailsPage = () => {
 		removeProductFromCart(productsInCart, id, dispatch);
 	};
 
+	const handleFavorite = () => {
+		setFavorite(!favorite);
+	};
+
 	const handleQuantity = (action) => {
 		if (isInTheCart) {
 			manageQuantityProduct(action, productsInCart, id, quantity, dispatch);
@@ -89,20 +93,42 @@ export const DetailsPage = () => {
 					backgroundPosition: 'center',
 				}}
 			>
-				<button onClick={handleGoBack}>{'<'}</button>
-				<button>
-					<i className='far fa-heart'></i>
+				<button className='btn btn-light' onClick={handleGoBack}>
+					<i className='fas fa-chevron-left'></i>
 				</button>
-				<button onClick={handleGoToCart}>
-					<i className='fas fa-shopping-cart'></i>
-				</button>
-			</div>
-			<div>
-				{isDiscount && <h2>{`${discountBrute}% OFF`}</h2>}
-				<h1>{name}</h1>
-				<h2>{isDiscount ? `${priceToPay} ${price}` : `${price}`}</h2>
-				<p>{description}</p>
 				<div>
+					<button onClick={handleFavorite} className='btn btn-light'>
+						<i
+							className={
+								favorite ? 'fas fa-heart favorite' : 'far fa-heart'
+							}
+						></i>
+					</button>
+					<button className='btn btn-light' onClick={handleGoToCart}>
+						<i className='fas fa-shopping-cart'></i>
+					</button>
+				</div>
+			</div>
+			<div className='burger-details-container'>
+				{isDiscount && (
+					<div
+						className='alert alert-success discount'
+						role='alert'
+					>{`${discountBrute}% OFF`}</div>
+				)}
+				<h1>{name}</h1>
+				{isDiscount ? (
+					<h2>
+						${priceToPay.toFixed(2)}{' '}
+						<small className='death-text line-through'>
+							${price.toFixed(2)}
+						</small>
+					</h2>
+				) : (
+					<h2>${price.toFixed(2)}</h2>
+				)}
+				<p>{description}</p>
+				<div className='squares-container'>
 					<SquareProductDetails
 						title='Size'
 						icon='hamburger'
@@ -119,24 +145,34 @@ export const DetailsPage = () => {
 						content={`${prepareTimeMinutes} minutes`}
 					/>
 				</div>
-				<div>
-					<h3>Ingredients</h3>
+				<h3>Ingredients</h3>
+				<div className='squares-container'>
 					<SquareIcon icon='cheese' />
 					<SquareIcon icon='pepper-hot' />
 					<SquareIcon icon='seedling' />
 					<SquareIcon icon='carrot' />
 				</div>
-				<div>
-					<h3>Bread</h3>
+				<h3>Bread</h3>
+				<div className='squares-container'>
 					<SquareIcon icon='bread-slice' />
 					<SquareIcon icon='bread-slice' />
 					<SquareIcon icon='bread-slice' />
 				</div>
-				<div>
+				<div className='details-buttons-container'>
 					<div>
-						<button onClick={() => handleQuantity('-')}>-</button>
+						<button
+							className='btn btn-light'
+							onClick={() => handleQuantity('-')}
+						>
+							-
+						</button>
 						<label>{quantity}</label>
-						<button onClick={() => handleQuantity('+')}>+</button>
+						<button
+							className='btn btn-light'
+							onClick={() => handleQuantity('+')}
+						>
+							+
+						</button>
 					</div>
 					{buttonGenerator(
 						isInTheCart,

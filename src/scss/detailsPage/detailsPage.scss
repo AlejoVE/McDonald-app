@@ -1,9 +1,82 @@
+@import '../var';
 .details-header {
+	display: flex;
+	flex-direction: row;
 	border: 1px solid red;
 	width: 100%;
 	height: 50vh;
+	padding-left: 10px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	border-collapse: separate;
+
+	div {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-content: flex-end;
+		width: 100%;
+		height: auto;
+
+		button {
+			border: 1px solid blue;
+			margin-right: 10px;
+		}
+	}
+
+	button {
+		height: 10%;
+	}
 }
 
 .details-page-container {
 	border: 1px solid blue;
+}
+
+.burger-details-container {
+	border: 1px solid green;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	h3 {
+		margin-top: 25px;
+		margin-bottom: 25px;
+	}
+}
+
+.squares-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-align: center;
+
+	i {
+		font-size: 20px;
+	}
+}
+
+.favorite {
+	color: $heart;
+}
+
+.discount {
+	width: 30%;
+	border-radius: 8px;
+	text-align: center;
+}
+
+.details-buttons-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
+
+.selected {
+	border: 3px solid yellow;
+}
+
+.icon {
+	font-size: 20px;
 }

@@ -1,5 +1,4 @@
 .order-details-container {
-  border: 1px solid red;
   background-color: #ffffff;
   font-family: 'Roboto', sans-serif; }
   .order-details-container button {
@@ -9,7 +8,6 @@
 .order-header-container {
   display: flex;
   flex-direction: row;
-  border: 1px solid green;
   justify-content: space-between;
   text-align: center; }
   .order-header-container h1 {
@@ -20,8 +18,7 @@
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  border: 1px solid blue; }
+  align-items: center; }
 
 .edit-delete-buttons-container {
   display: flex;

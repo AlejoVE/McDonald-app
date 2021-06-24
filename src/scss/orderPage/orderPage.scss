@@ -1,6 +1,5 @@
 @import '../var';
 .order-details-container {
-	border: 1px solid red;
 	background-color: $order-details-background;
 	font-family: 'Roboto', sans-serif;
 
@@ -13,16 +12,13 @@
 .order-header-container {
 	display: flex;
 	flex-direction: row;
-	border: 1px solid green;
 	justify-content: space-between;
-    text-align: center;
+	text-align: center;
 
-    h1 {
-        width: 100%;
-    }
+	h1 {
+		width: 100%;
+	}
 }
-
-
 
 .order-detail-line {
 	display: flex;
@@ -30,7 +26,6 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	border: 1px solid blue;
 }
 
 .edit-delete-buttons-container {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { products } from '../assets/products';
 import { Product } from './Product';
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 
 export const ListingPage = () => {
 

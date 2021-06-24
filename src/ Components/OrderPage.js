@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import {  useHistory } from 'react-router-dom';
 import { OrderContext } from '../context/OrderContext';
 import { calculatePrepareTime, calculateCost } from '../helpers/helpers';
 import { Product } from './Product';
@@ -22,7 +22,7 @@ export const OrderPage = () => {
 			<div className='order-header-container'>
 				<div className="order-header-button-container">
 					<button className="btn btn-light" onClick={handleGoBack}>
-						<i class="fas fa-chevron-left"></i>
+						<i className="fas fa-chevron-left"></i>
 					</button>
 				</div>
 				<h1>Your order</h1>

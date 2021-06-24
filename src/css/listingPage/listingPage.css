@@ -1,14 +1,11 @@
 .product-container {
   display: flex;
   flex-direction: row;
-  margin-bottom: 15px;
-  border: 1px solid blue; }
+  margin-bottom: 15px; }
   .product-container img {
-    width: 20%;
-    border: 2px solid green; }
+    width: 20%; }
 
 .listing-container {
-  border: 1px solid blue;
   width: 100%; }
 
 .button {
