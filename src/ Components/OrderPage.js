@@ -1,28 +1,48 @@
 import React, { useContext } from 'react';
-import {  useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { OrderContext } from '../context/OrderContext';
 import { calculatePrepareTime, calculateCost } from '../helpers/helpers';
 import { Product } from './Product';
+import Swal from 'sweetalert2';
 
 export const OrderPage = () => {
 	const { initialState } = useContext(OrderContext);
 	const { productsInCart } = initialState;
-	const history = useHistory()
+	const history = useHistory();
 
 	const { basePrice, globalDiscount, totalToPay } =
 		calculateCost(productsInCart);
 	const { hours, minutes } = calculatePrepareTime(productsInCart);
 
 	const handleGoBack = () => {
-		 history.goBack();
-	}
+		history.goBack();
+	};
+
+	const handlePay = () => {
+
+		if(productsInCart.length <1){
+			Swal.fire({
+				title: 'Oops!',
+				text: 'Your cart is empty, please buy some burgers!',
+				icon: 'error',
+				confirmButtonText: 'Ok',
+			});
+			return
+		};
+		Swal.fire({
+			title: 'Order sent',
+			text: 'Thank you for your order, enjoy your meal!',
+			icon: 'success',
+			confirmButtonText: 'Ok',
+		});
+	};
 
 	return (
 		<div>
 			<div className='order-header-container'>
-				<div className="order-header-button-container">
-					<button className="btn btn-light" onClick={handleGoBack}>
-						<i className="fas fa-chevron-left"></i>
+				<div className='order-header-button-container'>
+					<button className='btn btn-light' onClick={handleGoBack}>
+						<i className='fas fa-chevron-left'></i>
 					</button>
 				</div>
 				<h1>Your order</h1>
@@ -53,7 +73,11 @@ export const OrderPage = () => {
 						{hours === 0 ? `${minutes} minutes` : `${hours}h${minutes}m`}
 					</label>
 				</div>
-				<button type='button' className='btn btn-warning button'>
+				<button
+					onClick={handlePay}
+					type='button'
+					className='btn btn-warning button'
+				>
 					Payment and delivery
 				</button>
 			</div>
