@@ -21,7 +21,6 @@ export const manageQuantityProduct = (
 ) => {
 	const index = productsInCart.findIndex((x) => x.id === id);
 	const targetProduct = productsInCart[index];
-	console.log({ productsInCart });
 
 	if (action === '-') {
 		if (quantity <= 1) {
@@ -81,9 +80,21 @@ export const divGenerator = (
 
 	return (
 		<div>
-			<button type="button" className="btn btn-light" onClick={() => handleQuantity('-')}>-</button>
+			<button
+				type='button'
+				className='btn btn-light'
+				onClick={() => handleQuantity('-')}
+			>
+				-
+			</button>
 			<label>{quantity}</label>
-			<button type="button" className="btn btn-light" onClick={() => handleQuantity('+')}>+</button>
+			<button
+				type='button'
+				className='btn btn-light'
+				onClick={() => handleQuantity('+')}
+			>
+				+
+			</button>
 		</div>
 	);
 };
@@ -118,5 +129,5 @@ export const calculatePrepareTime = (productsInCart) => {
 export const calculatePriceProduct = (productPrice, productDiscount) => {
 	const discount = (productPrice * productDiscount) / 100;
 	const priceToPay = productPrice - discount;
-	return priceToPay
-}
+	return priceToPay;
+};
