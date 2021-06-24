@@ -1,6 +1,7 @@
 .product-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
   border: 1px solid blue; }
   .product-container img {
     width: 20%;
@@ -8,7 +9,11 @@
 
 .listing-container {
   border: 1px solid blue;
-  position: relative;
-  height: 100vh; }
+  width: 100%; }
+
+.button {
+  width: 50%;
+  display: block;
+  margin: auto; }
 
 /*# sourceMappingURL=listingPage.css.map */

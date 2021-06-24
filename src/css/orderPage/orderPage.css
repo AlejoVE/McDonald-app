@@ -1,0 +1,31 @@
+.order-details-container {
+  border: 1px solid red;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif; }
+  .order-details-container button {
+    margin-top: 10px;
+    margin-bottom: 10px; }
+
+.order-header-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid green;
+  justify-content: space-between;
+  text-align: center; }
+  .order-header-container h1 {
+    width: 100%; }
+
+.order-detail-line {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid blue; }
+
+.edit-delete-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
+/*# sourceMappingURL=orderPage.css.map */

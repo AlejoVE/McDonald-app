@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { OrderContext } from '../context/OrderContext';
 import { calculatePrepareTime, calculateCost } from '../helpers/helpers';
 import { Product } from './Product';
@@ -7,38 +7,55 @@ import { Product } from './Product';
 export const OrderPage = () => {
 	const { initialState } = useContext(OrderContext);
 	const { productsInCart } = initialState;
+	const history = useHistory()
 
-	const { basePrice, globalDiscount, totalToPay } = calculateCost(productsInCart);
-	const {hours, minutes} = calculatePrepareTime(productsInCart);
-	
+	const { basePrice, globalDiscount, totalToPay } =
+		calculateCost(productsInCart);
+	const { hours, minutes } = calculatePrepareTime(productsInCart);
+
+	const handleGoBack = () => {
+		 history.goBack();
+	}
 
 	return (
 		<div>
-			<div className="order-header-container">
-				<button><Link to='/list'>{'<'}</Link></button>
+			<div className='order-header-container'>
+				<div className="order-header-button-container">
+					<button className="btn btn-light" onClick={handleGoBack}>
+						<i class="fas fa-chevron-left"></i>
+					</button>
+				</div>
 				<h1>Your order</h1>
 			</div>
 			{productsInCart.map((product, i) => {
 				return <Product product={product} type='order' key={i}></Product>;
 			})}
-			<div className="order-details-container">
-				<div className="order-detail-line">
-					<h2>items</h2>
+			<div className='order-details-container'>
+				<div className='order-detail-line'>
+					<h5 className='death-text'>Items</h5>
 					<label>${basePrice.toFixed(2)}</label>
 				</div>
-				<div className="order-detail-line" >
-					<h2>Discount</h2>
-					<label>-${globalDiscount.toFixed(2)}</label>
+				<div className='order-detail-line'>
+					<h5 className='death-text'>Discount</h5>
+					<label className='death-text'>
+						-${globalDiscount.toFixed(2)}
+					</label>
 				</div>
-				<div className="order-detail-line">
-					<h2>Cost</h2>
-					<label>${totalToPay.toFixed(2)}</label>
+				<div className='order-detail-line'>
+					<h5 className='death-text'>Cost</h5>
+					<label>
+						<strong>${totalToPay.toFixed(2)}</strong>
+					</label>
 				</div>
-				<div className="order-detail-line">
-					<h2>Prepare time</h2>
-					<label>{hours === 0 ? `${minutes} minutes`: `${hours}h${minutes}m`}</label>
+				<div className='order-detail-line'>
+					<h5 className='death-text'>Prepare time</h5>
+					<label>
+						{hours === 0 ? `${minutes} minutes` : `${hours}h${minutes}m`}
+					</label>
 				</div>
-				<button>Payment and delivery</button>
+				<button type='button' className='btn btn-warning button'>
+					Payment and delivery
+				</button>
 			</div>
 		</div>
 	);

@@ -1,3 +1,52 @@
 @import './listingPage/listingPage.scss';
 @import './orderPage/orderPage.scss';
+@import './detailsPage/detailsPage.scss';
+@import './_var.scss';
 
+body {
+	background-color: $background-color;
+}
+
+.product-details-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 55%;
+	padding-left: 10px;
+}
+
+.product-title {
+	font-family: 'Roboto', sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	overflow-wrap: break-word;
+}
+
+.add-button-container {
+	width: auto;
+}
+
+.price-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border: 1px solid red;
+	width: 30%;
+}
+
+.price-details-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+	border: 1px solid black;
+}
+
+.line-through {
+	text-decoration: line-through;
+}
+
+.death-text {
+    color: $death-text;
+}
