@@ -55,7 +55,7 @@ export const buttonGenerator = (
 				className='btn btn-success'
 				onClick={handleAddToCart}
 			>
-				Add to cart
+				Add to cart 
 			</button>
 		);
 	}

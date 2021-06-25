@@ -15,7 +15,7 @@ export const ListingPage = () => {
 				return <Product product={data} type='list' key={data.id}></Product>;
 			})}
 			<button onClick={handleSeeCart} className='bnt btn-primary button'>
-				See cart
+				See cart <i className='fas fa-shopping-cart'></i>
 			</button>
 		</div>
 	);

@@ -52,7 +52,6 @@ export const DetailsPage = () => {
 		history.goBack();
 	};
 	const handleGoToCart = () => {
-
 		history.push('/order');
 	};
 

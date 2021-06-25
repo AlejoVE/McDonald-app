@@ -43,13 +43,13 @@
 .details-header {
   display: flex;
   flex-direction: row;
-  border: 1px solid red;
   width: 100%;
   height: 50vh;
   padding-left: 10px;
   padding-top: 20px;
   margin-bottom: 20px;
-  border-collapse: separate; }
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px; }
   .details-header div {
     display: flex;
     flex-direction: row;
@@ -58,7 +58,6 @@
     width: 100%;
     height: auto; }
     .details-header div button {
-      border: 1px solid blue;
       margin-right: 10px; }
   .details-header button {
     height: 10%; }
@@ -67,9 +66,14 @@
   border: 1px solid blue; }
 
 .burger-details-container {
-  border: 1px solid green;
   padding-left: 20px;
   padding-right: 20px; }
+  .burger-details-container h1,
+  .burger-details-container h2,
+  .burger-details-container p {
+    margin-bottom: 25px; }
+  .burger-details-container h2 small {
+    font-size: 17px; }
   .burger-details-container h3 {
     margin-top: 25px;
     margin-bottom: 25px; }
